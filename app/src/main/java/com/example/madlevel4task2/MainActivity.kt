@@ -1,29 +1,41 @@
 package com.example.madlevel4task2
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import com.example.madlevel4task2.databinding.FragmentMatchBinding
+
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: FragmentMatchBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(findViewById(R.id.toolbar))
 
-        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
+        binding = FragmentMatchBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setSupportActionBar(findViewById(R.id.toolbar))
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
+    private fun updateUI() {
+//        binding.setImageResource(R.drawable.dice1)
+//        binding.imgDice.setImageResource(R.drawable.dice2)
+    }
+
+    private fun initViews() {
+        updateUI()
+//        binding.btnHigher.setOnClickListener {
+//            onHigherClick()
+//        }
+//        binding.btnLower.setOnClickListener {
+//            onLowerClick()
+//        }
+//        binding.btnEquals.setOnClickListener {
+//            onEqualClick()
+//        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -31,8 +43,15 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_match_history -> true
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
 }

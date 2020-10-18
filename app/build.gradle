@@ -11,9 +11,8 @@ android {
         viewBinding = true
     }
 
-
     defaultConfig {
-        applicationId "com.example.madlevel4task1"
+        applicationId "com.example.madlevel4task2"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
