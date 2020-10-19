@@ -14,4 +14,7 @@
     <string name="text_view_versus">V.S.</string>
     <string name="text_view_computer">Computer</string>
     <string name="text_view_you">You</string>
+    <string name="text_win">You win!</string>
+    <string name="text_draw">Draw!</string>
+    <string name="text_lose">You lost!</string>
 </resources>

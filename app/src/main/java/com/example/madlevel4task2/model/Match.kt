@@ -8,10 +8,10 @@ import java.util.*
 @Entity(tableName = "match_table")
 data class Match(
     @ColumnInfo(name = "player_move")
-    var playerMove: String,
+    var playerMove: Int,
 
     @ColumnInfo(name = "computer_move")
-    var computerMove: String,
+    var computerMove: Int,
 
     @ColumnInfo(name = "result")
     var result: String,

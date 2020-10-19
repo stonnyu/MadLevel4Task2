@@ -16,7 +16,10 @@ class MatchAdapter(private val matches: List<Match>) : RecyclerView.Adapter<Matc
         fun databind(match: Match) {
             itemView.tvDate.text = match.matchDate
             itemView.tvMatchResult.text = match.result
-            itemView.tvStatistics.text = String.format("%d")
+
+//            itemView.ivComputer.setImageResource(R.drawable.rock)
+//            itemView.ivPaper.setImageResource(R.drawable.paper)
+//            itemView.ivScissors.setImageResource(R.drawable.scissors)
 
 //            itemView.tvAmount.text = String.format("%dX", match.productAmount)
         }
