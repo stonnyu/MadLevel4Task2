@@ -1,10 +1,9 @@
 package com.example.madlevel4task2.ui
 
 import android.os.Bundle
+import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -42,8 +41,25 @@ class MatchHistoryFragment : Fragment() {
         getMatchHistoryFromDatabase()
     }
 
-    private fun initRv() {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        inflater.inflate(R.menu.menu_match_history, menu)
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        when (item.itemId) {
+            R.id.action_delete_all -> {
+                removeAllProducts()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
+    private fun initRv() {
         rvMatches.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         rvMatches.adapter = matchAdapter

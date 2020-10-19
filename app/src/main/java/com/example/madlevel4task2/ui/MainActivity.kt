@@ -1,6 +1,7 @@
 package com.example.madlevel4task2.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -14,15 +15,12 @@ import com.example.madlevel4task2.R
 class MainActivity : AppCompatActivity() {
 
     lateinit var navController: NavController
-    lateinit var toolbar1 : Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
         navController = findNavController(R.id.nav_host_fragment)
-//        toolbar1 = findViewById(R.id.toolbar)
-//        toolbar1.visibility = View.VISIBLE
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -40,8 +38,6 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(
                     R.id.action_matchFragment_to_matchHistoryFragment
                 )
-//                supportActionBar?.hide()
-//                setSupportActionBar(findViewById(R.id.toolbar2))
             }
         }
         return super.onOptionsItemSelected(item)

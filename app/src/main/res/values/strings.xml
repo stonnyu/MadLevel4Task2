@@ -17,4 +17,5 @@
     <string name="text_win">You win!</string>
     <string name="text_draw">Draw!</string>
     <string name="text_lose">You lost!</string>
+    <string name="action_delete_all">action_delete_all</string>
 </resources>

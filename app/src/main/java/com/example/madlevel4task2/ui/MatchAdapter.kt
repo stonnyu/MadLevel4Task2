@@ -16,8 +16,17 @@ class MatchAdapter(private val matches: List<Match>) : RecyclerView.Adapter<Matc
             itemView.tvHistoryDate.text = match.matchDate
             itemView.tvMatchHistoryResult.text = match.result
 
-            itemView.ivMatchHistoryComputer.setImageResource(R.drawable.rock)
-            itemView.ivMatchHistoryYou.setImageResource(R.drawable.paper)
+            when (match.playerMove){
+                ROCK -> itemView.ivMatchHistoryYou.setImageResource(R.drawable.rock)
+                PAPER -> itemView.ivMatchHistoryYou.setImageResource(R.drawable.paper)
+                SCISSORS -> itemView.ivMatchHistoryYou.setImageResource(R.drawable.scissors)
+            }
+
+            when (match.computerMove){
+                ROCK -> itemView.ivMatchHistoryComputer.setImageResource(R.drawable.rock)
+                PAPER -> itemView.ivMatchHistoryComputer.setImageResource(R.drawable.paper)
+                SCISSORS -> itemView.ivMatchHistoryComputer.setImageResource(R.drawable.scissors)
+            }
 
         }
     }

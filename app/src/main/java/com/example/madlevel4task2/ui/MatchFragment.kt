@@ -14,9 +14,9 @@ import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 
-private const val ROCK = 0
-private const val PAPER = 1
-private const val SCISSORS = 2
+const val ROCK = 0
+const val PAPER = 1
+const val SCISSORS = 2
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -110,7 +110,7 @@ class MatchFragment : Fragment() {
 
 
         mainScope.launch {
-            val date = SimpleDateFormat("yyyy.MM.dd HH:mm:ss z")
+            val date = SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy")
 
             val match = Match(
                 playerMove = hand,
