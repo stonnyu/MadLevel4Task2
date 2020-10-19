@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.madlevel4task2.model.Match
 import com.example.madlevel4task2.R
-import kotlinx.android.synthetic.main.fragment_match.view.*
 import kotlinx.android.synthetic.main.item_match.view.*
 
 class MatchAdapter(private val matches: List<Match>) : RecyclerView.Adapter<MatchAdapter.ViewHolder>() {
@@ -14,14 +13,12 @@ class MatchAdapter(private val matches: List<Match>) : RecyclerView.Adapter<Matc
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun databind(match: Match) {
-            itemView.tvDate.text = match.matchDate
-            itemView.tvMatchResult.text = match.result
+            itemView.tvHistoryDate.text = match.matchDate
+            itemView.tvMatchHistoryResult.text = match.result
 
-//            itemView.ivComputer.setImageResource(R.drawable.rock)
-//            itemView.ivPaper.setImageResource(R.drawable.paper)
-//            itemView.ivScissors.setImageResource(R.drawable.scissors)
+            itemView.ivMatchHistoryComputer.setImageResource(R.drawable.rock)
+            itemView.ivMatchHistoryYou.setImageResource(R.drawable.paper)
 
-//            itemView.tvAmount.text = String.format("%dX", match.productAmount)
         }
     }
 

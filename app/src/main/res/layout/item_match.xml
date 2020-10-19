@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvMatchResult"
+            android:id="@+id/tvMatchHistoryResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -24,7 +24,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvDate"
+            android:id="@+id/tvHistoryDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -44,7 +44,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/ivComputer"
+                    android:id="@+id/ivMatchHistoryComputer"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center"
@@ -52,15 +52,15 @@
                     android:src="@drawable/paper" />
 
                 <TextView
-                    android:id="@+id/tvComputer"
+                    android:id="@+id/tvMatchHistoryComputer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="TextView" />
+                    android:text="@string/text_view_computer" />
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tvVersus"
+                android:id="@+id/tvMatchHistoryVersus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -80,7 +80,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/ivYou"
+                    android:id="@+id/ivMatchHistoryYou"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center"
@@ -88,11 +88,11 @@
                     android:src="@drawable/scissors" />
 
                 <TextView
-                    android:id="@+id/tvYou"
+                    android:id="@+id/tvMatchHistoryYou"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="TextView" />
+                    android:text="@string/text_view_you" />
             </LinearLayout>
 
         </LinearLayout>

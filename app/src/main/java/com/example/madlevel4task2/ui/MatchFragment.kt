@@ -1,11 +1,18 @@
 package com.example.madlevel4task2.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import com.example.madlevel4task2.R
 import com.example.madlevel4task2.databinding.FragmentMatchBinding
+import com.example.madlevel4task2.model.Match
+import com.example.madlevel4task2.repository.MatchRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.util.*
 
 private const val ROCK = 0
 private const val PAPER = 1
@@ -17,6 +24,8 @@ private const val SCISSORS = 2
 class MatchFragment : Fragment() {
 
     private lateinit var binding: FragmentMatchBinding
+    private lateinit var matchRepository: MatchRepository
+    private val mainScope = CoroutineScope(Dispatchers.Main)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +37,7 @@ class MatchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        matchRepository = MatchRepository(requireContext())
         initViews()
     }
 
@@ -58,42 +68,69 @@ class MatchFragment : Fragment() {
 
     private fun playMatch(hand: Int) {
         val pcHand = randomize()
+        var result = binding.tvResult.text
 
         when (hand) {
             ROCK -> when (pcHand) {
                 ROCK -> {
-                    binding.tvResult.text = getString(R.string.text_draw)
+                    result = getString(R.string.text_draw)
                 }
                 PAPER -> {
-                    binding.tvResult.text = getString(R.string.text_lose)
+                    result = getString(R.string.text_lose)
                 }
                 SCISSORS -> {
-                    binding.tvResult.text = getString(R.string.text_win)
+                    result = getString(R.string.text_win)
                 }
             }
 
             PAPER -> when (pcHand) {
                 PAPER -> {
-                    binding.tvResult.text = getString(R.string.text_draw)
+                    result = getString(R.string.text_draw)
                 }
                 SCISSORS -> {
-                    binding.tvResult.text = getString(R.string.text_lose)
+                    result = getString(R.string.text_lose)
                 }
                 ROCK -> {
-                    binding.tvResult.text = getString(R.string.text_win)
+                    result = getString(R.string.text_win)
                 }
             }
 
             SCISSORS -> when (pcHand) {
                 SCISSORS -> {
-                    binding.tvResult.text = getString(R.string.text_draw)
+                    result = getString(R.string.text_draw)
                 }
                 ROCK -> {
-                    binding.tvResult.text = getString(R.string.text_lose)
+                    result = getString(R.string.text_lose)
                 }
                 PAPER -> {
-                    binding.tvResult.text = getString(R.string.text_win)
+                    result = getString(R.string.text_win)
                 }
+            }
+        }
+
+
+        mainScope.launch {
+            val date = SimpleDateFormat("yyyy.MM.dd HH:mm:ss z")
+
+            val match = Match(
+                playerMove = hand,
+                computerMove = pcHand,
+                result = result.toString(),
+                matchDate = date.format(Date())
+            )
+
+            withContext(Dispatchers.IO) {
+                matchRepository.insertMatch(match)
+            }
+
+            getMatchHistoryFromDatabase()
+        }
+    }
+
+    private fun getMatchHistoryFromDatabase() {
+        mainScope.launch {
+            val matchList = withContext(Dispatchers.IO) {
+                matchRepository.getAllMatches()
             }
         }
     }
